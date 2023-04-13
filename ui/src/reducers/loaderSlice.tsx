@@ -10,7 +10,7 @@ export const loaderSlice = createSlice({
   },
   reducers:{
     setLoader: (state, action) => {
-      console.debug('fucking here')
+      // console.debug('comment of excitement removed')
       state.loader = action.payload
     }
   }

@@ -3,7 +3,6 @@
 
 /ui/node_modules
 /ui/build
-/ui/public
 
 # misc
 /ui/.DS_Store

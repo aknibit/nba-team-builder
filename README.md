@@ -6,7 +6,11 @@ To run the application, just run
 docker-compose up
 ```
 
-...and it will run database (`port 3306`), backend (`port 3200`) and frontend (`port 3100`) automatically.
+...and it will run database (`port 3306`), backend (`port 3200`) and frontend (`port 3100`) automatically. Once all 3 containers are up, yhe app will be available here:
+
+```
+http://localhost:3100
+```
 
 Besides the required tecnology for this assignment, I've used the following packages
 

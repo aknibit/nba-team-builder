@@ -1,0 +1,57 @@
+version: '3.9'
+
+services:
+
+  ui:
+    build: 
+      context: ./ui
+      dockerfile: Dockerfile
+    depends_on:
+      - api
+    container_name: ui-container
+    ports:
+      - '3100:3100'
+    volumes:
+      - /app/node_modules
+      - ./ui:/app
+    stdin_open: true
+
+  api:
+    build: 
+      context: ./api
+      dockerfile: Dockerfile
+    networks:
+      - phiture-network
+    depends_on:
+      - mysql
+    container_name: api-container
+    ports:
+      - '3200:3200'
+    volumes:
+      - /app/node_modules
+      - ./api:/app
+    env_file: .env
+    environment:
+      NODE_ENV: dev
+      MYSQL_HOST: mysql
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+
+  mysql:
+    image: mysql:8.0
+    platform: linux/x86_64
+    container_name: mysql-container
+    networks:
+      - phiture-network
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql-dump:/docker-entrypoint-initdb.d
+    env_file: .env
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+networks:
+  phiture-network:
+    driver: bridge

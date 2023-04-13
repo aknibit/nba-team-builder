@@ -71,7 +71,7 @@ export const AutoTeam = () => {
           </div>
           
           <div className="text-xs text-black leading-4">
-            Exact points will be create less equilibrate teams (and will be slower).
+            Exact points will create less equilibrate teams (and will be slower).
           </div>
           <div className="w-full text-center mt-3">
             <button 

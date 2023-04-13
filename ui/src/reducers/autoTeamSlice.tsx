@@ -17,7 +17,7 @@ export const autoTeamSlice = createSlice({
   initialState,
   reducers:{
     setPG: (state, action) => {
-        state.PG = action.payload;
+      state.PG = action.payload;
     },
     setSG: (state, action) => {
       state.SG = action.payload;
